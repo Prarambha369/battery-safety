@@ -1,0 +1,17 @@
+.battery-status-header {
+    font-weight: bold;
+    color: #2e96ff;
+}
+.battery-threshold-header {
+    font-weight: bold;
+    color: #ff7f00;
+}
+.battery-safety-icon {
+    icon-size: 16px;
+}
+.popup-menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.popup-menu-item:active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
