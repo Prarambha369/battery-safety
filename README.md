@@ -23,7 +23,7 @@ Advanced battery management for GNOME Shell with charging thresholds and TLP pro
 #### 🚀 Installation
 1.  Clone the repository into your local extensions folder:
     ```bash
-    git clone https://github.com/misterbashyal/battery-safety.git ~/.local/share/gnome-shell/extensions/battery-safety@misterbashyal
+    git clone https://github.com/Prarambha369/battery-safety.git ~/.local/share/gnome-shell/extensions/battery-safety@misterbashyal
     ```
 2.  Enable the extension using **Extensions** or **Extension Manager** app.
 3.  Log out and log back in (or restart GNOME Shell) to apply changes.
@@ -38,4 +38,4 @@ tlp-profile current  # Returns current thresholds
 ```
 
 #### 📜 License
-This project is licensed under the terms included in the metadata. Developed by [misterbashyal](https://github.com/misterbashyal).
+This project is licensed under the terms included in the metadata. Developed by [misterbashyal](https://github.com/Prarambha369/).
