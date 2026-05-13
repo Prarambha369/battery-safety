@@ -1,0 +1,12 @@
+{
+  "name": "Battery Safety Controls",
+  "description": "Advanced battery management with charging thresholds and safety controls",
+  "uuid": "battery-safety@misterbashyal",
+  "shell-version": [
+    "45",
+    "46"
+  ],
+  "version": 1,
+  "url": "https://github.com/Prarambha369/battery-safety/",
+  "settings-schema": "org.gnome.shell.extensions.battery-safety"
+}
