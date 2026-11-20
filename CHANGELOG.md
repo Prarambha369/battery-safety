@@ -5,7 +5,9 @@
 Rewrite. Threshold changes in v1 never took effect on most systems. This release fixes that and prepares the extension for extensions.gnome.org.
 
 ### Fixed
-- **Threshold changes now actually apply.** v1 ran `sed` on `/etc/tlp.conf`, which edits the stock commented-out lines and leaves them commented, and settings in `/etc/tlp.d/` override that file anyway. v2 uses `tlp setcharge` for an immediate change and a `/etc/tlp.d/99-battery-safety.conf` drop-in so it persists.
+- **Threshold changes now actually apply.** With a stock `/etc/tlp.conf`, v1's `sed` rewrote the commented-out `#START/STOP_CHARGE_THRESH_BAT0=` lines but left them commented, so nothing changed. v2 uses `tlp setcharge` for an immediate change and a `/etc/tlp.d/99-battery-safety.conf` drop-in so it persists. Active values in `/etc/tlp.conf` still take precedence over drop-ins, and v2 warns when that happens.
+- Batteries named with a hyphen, such as `macsmc-battery` on Apple Silicon, are accepted.
+- *Open TLP battery report* runs `tlp-stat -b` with `sudo`, because it needs root.
 - One password prompt per change. v1 asked twice, and four times for presets, and its two commands could run out of order.
 - Notifications only report success when the change succeeded. Cancelling the password prompt is silent, and errors show TLP's message.
 - Temperature comes from the battery's own sensor. v1 showed the CPU thermal zone. It's hidden when the battery has no sensor.

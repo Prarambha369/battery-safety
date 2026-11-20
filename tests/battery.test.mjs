@@ -107,6 +107,9 @@ test('battery names are restricted', () => {
     assert.ok(!isValidBatteryName('BAT0; reboot'));
     assert.ok(!isValidBatteryName('../BAT0'));
     assert.ok(!isValidBatteryName(''));
+    assert.ok(isValidBatteryName('macsmc-battery'), 'Apple Silicon battery name');
+    assert.ok(!isValidBatteryName('-BAT0'), 'leading hyphen looks like an option');
+    assert.ok(!isValidBatteryName('a'.repeat(17)));
     assert.throws(() => buildApplyArgv(40, 80, 'BAT0 x'), /Invalid battery/);
 });
 

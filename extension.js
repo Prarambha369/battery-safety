@@ -171,11 +171,14 @@ class BatterySafetyIndicator extends PanelMenu.Button {
     }
 
     async _refresh() {
+        // Refreshes can overlap (timer, menu open, after apply); only the
+        // newest one may update the state.
+        const generation = this._refreshGeneration = (this._refreshGeneration ?? 0) + 1;
         try {
             if (!this._battery)
                 this._battery = await findBattery();
             const state = this._battery ? await readBattery(this._battery) : null;
-            if (this._destroyed)
+            if (this._destroyed || generation !== this._refreshGeneration)
                 return;
             this._state = state;
             this._render();
@@ -238,9 +241,10 @@ class BatterySafetyIndicator extends PanelMenu.Button {
         if (this._busy || !this._state || !this._battery)
             return;
 
-        let values;
+        let values, argv;
         try {
             values = normaliseThresholds(start, stop, this._state.supportsStart);
+            argv = buildApplyArgv(values.start, values.stop, this._battery);
         } catch (e) {
             Main.notify(TITLE, e.message);
             return;
@@ -248,7 +252,7 @@ class BatterySafetyIndicator extends PanelMenu.Button {
 
         this._busy = true;
         this._setControlsSensitive(false);
-        const result = await run(buildApplyArgv(values.start, values.stop, this._battery));
+        const result = await run(argv);
         this._busy = false;
         if (this._destroyed)
             return;
@@ -269,7 +273,8 @@ class BatterySafetyIndicator extends PanelMenu.Button {
     }
 
     _openReport() {
-        const cmd = 'tlp-stat -b; echo; read -r -p "Press Enter to close…" _';
+        // tlp-stat -b needs root; sudo prompts inside the terminal only.
+        const cmd = 'sudo tlp-stat -b; echo; read -r -p "Press Enter to close…" _';
         const terminals = [
             ['ptyxis', '--'], ['kgx', '--'], ['gnome-terminal', '--'],
             ['kitty'], ['alacritty', '-e'], ['foot'], ['xterm', '-e'],
