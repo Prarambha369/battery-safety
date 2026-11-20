@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="battery-safety">
   <schema id="org.gnome.shell.extensions.battery-safety" path="/org/gnome/shell/extensions/battery-safety/">
-    <key name="default-profile" type="s">
-      <default>'coding'</default>
-      <summary>Default TLP profile on extension load</summary>
-    </key>
     <key name="refresh-interval" type="i">
+      <range min="5" max="3600"/>
       <default>30</default>
       <summary>Seconds between battery status updates</summary>
     </key>
