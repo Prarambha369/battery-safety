@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <title>Battery Safety</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2ec27e"/>
+      <stop offset="1" stop-color="#1a7f5a"/>
+    </linearGradient>
+    <linearGradient id="charge" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#8ff0a4"/>
+      <stop offset="1" stop-color="#c0f5cb"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="url(#bg)"/>
+  <!-- shield -->
+  <path d="M128 34 54 62v52c0 50 31 89 74 104 43-15 74-54 74-104V62L128 34Z"
+        fill="#ffffff" fill-opacity=".14" stroke="#ffffff" stroke-width="10" stroke-linejoin="round"/>
+  <!-- battery body -->
+  <rect x="98" y="84" width="60" height="100" rx="10" fill="none" stroke="#ffffff" stroke-width="9"/>
+  <rect x="114" y="70" width="28" height="14" rx="4" fill="#ffffff"/>
+  <!-- charge held at 80% -->
+  <rect x="109" y="111" width="38" height="62" rx="4" fill="url(#charge)"/>
+  <!-- limit line -->
+  <path d="M88 103h80" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 9"/>
+</svg>
