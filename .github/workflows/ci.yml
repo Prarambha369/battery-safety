@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+
+  smoke:
+    name: GNOME Shell (Fedora ${{ matrix.fedora }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        fedora: [39, 43, 45]
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./scripts/smoke-test.sh ${{ matrix.fedora }}
+
+  package:
+    needs: [unit, smoke]
+    runs-on: ubuntu-latest
+    container: fedora:latest
+    steps:
+      - run: dnf -y install gnome-shell zip unzip >/dev/null
+      - uses: actions/checkout@v4
+      - run: ./scripts/pack.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: battery-safety-extension
+          path: dist/*.zip
