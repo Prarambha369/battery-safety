@@ -302,6 +302,10 @@ class BatterySafetyIndicator extends PanelMenu.Button {
             this._settings.disconnect(this._settingsChangedId);
             this._settingsChangedId = null;
         }
+        if (this._menuOpenId) {
+            this.menu.disconnect(this._menuOpenId);
+            this._menuOpenId = null;
+        }
         this._settings = null;
         super.destroy();
     }
