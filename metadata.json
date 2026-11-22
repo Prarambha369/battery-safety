@@ -3,8 +3,8 @@
   "name": "Battery Safety",
   "description": "Protect your laptop battery with charge limits, one click from the top bar.\n\nChoose a preset (Conservation 40–80%, Balanced 20–90%, Full Charge) or set custom start and stop thresholds. The menu shows the limits your firmware is actually using, along with battery health, and temperature and cycle count when reported. Limits are applied with TLP and persist across reboots.\n\nRequires TLP 1.4+ and a laptop whose kernel driver supports charge thresholds.",
   "shell-version": ["45", "46", "47", "48", "49", "50", "51"],
-  "version": 2,
-  "version-name": "2.0",
+  "version": 3,
+  "version-name": "2.1",
   "url": "https://github.com/Prarambha369/battery-safety",
   "settings-schema": "org.gnome.shell.extensions.battery-safety",
   "donations": {

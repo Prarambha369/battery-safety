@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1: 2026-11
+
+- Disconnect the menu's open-state signal explicitly on disable, as the extensions.gnome.org review guidelines require (flagged by the Shexli analyzer).
+
 ## v2: 2026-11
 
 Rewrite. Threshold changes in v1 never took effect on most systems. This release fixes that and prepares the extension for extensions.gnome.org.
