@@ -53,7 +53,9 @@ ls /sys/class/power_supply/BAT*/charge_control_*_threshold
 
 ### From extensions.gnome.org
 
-*Coming soon.*
+<a href="https://extensions.gnome.org/extension/11908/battery-safety/"><img alt="Get it on GNOME Extensions" src="https://img.shields.io/badge/Get_it_on-GNOME_Extensions-4a86cf?logo=gnome&logoColor=white&style=for-the-badge" height="40"></a>
+
+Install it from [extensions.gnome.org/extension/11908/battery-safety](https://extensions.gnome.org/extension/11908/battery-safety/) with the browser integration, or with the *Extension Manager* app. Version 2.1 is waiting for review, and the install button will work once it's approved.
 
 ### From a release
 
