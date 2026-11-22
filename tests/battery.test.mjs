@@ -131,7 +131,9 @@ test('APPLY_SCRIPT only persists thresholds after tlp accepted them', () => {
 
 test('APPLY_SCRIPT writes TLP config keys with BAT0/BAT1 qualifiers only', () => {
     // TLP ignores qualifiers such as _BATT or _CMB0 in its config.
-    assert.match(APPLY_SCRIPT, /case "\$b" in BAT1\) k=BAT1;; \*\) k=BAT0;; esac/);
+    assert.match(APPLY_SCRIPT, /batdrv_select_battery "\$b"/, 'asks TLP for the key');
+    assert.match(APPLY_SCRIPT, /case "\$k" in BAT0\|BAT1\) ;;/, 'only accepts BAT0/BAT1 from TLP');
+    assert.match(APPLY_SCRIPT, /case "\$b" in BAT1\) k=BAT1;; \*\) k=BAT0;; esac/, 'name fallback');
     assert.match(APPLY_SCRIPT, /STOP_CHARGE_THRESH_\$k=\$e/);
     assert.ok(!/THRESH_\$b/.test(APPLY_SCRIPT));
 });
