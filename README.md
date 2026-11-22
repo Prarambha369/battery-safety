@@ -82,7 +82,7 @@ gnome-extensions install --force dist/battery-safety@misterbashyal.shell-extensi
 |---|---|
 | Reading status | Reads `/sys/class/power_supply/BAT*/`. No root access and no subprocesses. |
 | Changing a limit | Runs **one** `pkexec` command that writes `/etc/tlp.d/99-battery-safety.conf` and calls `tlp setcharge START STOP BAT`, so the change applies immediately and persists. |
-| Undoing it | Choose *Full Charge*, or delete `/etc/tlp.d/99-battery-safety.conf` and run `sudo tlp setcharge` (no arguments) to apply your own TLP configuration. Deleting the file alone leaves the current thresholds active until reboot. |
+| Undoing it | Choose *Full Charge* in the menu, then optionally delete `/etc/tlp.d/99-battery-safety.conf`. If you have your own thresholds configured in TLP, delete the file and run `sudo tlp setcharge` (no arguments) to apply them. With no other thresholds configured, there is nothing for TLP to restore and many laptops keep the last limit even across reboots, so choose *Full Charge* first, or run `sudo tlp fullcharge` while on AC power. |
 
 > [!NOTE]
 > TLP reads `/etc/tlp.conf` **after** the drop-in directory. If you have uncommented `START_CHARGE_THRESH_*` / `STOP_CHARGE_THRESH_*` lines there, they win at the next boot. Battery Safety detects this and tells you the change is only active until reboot.
